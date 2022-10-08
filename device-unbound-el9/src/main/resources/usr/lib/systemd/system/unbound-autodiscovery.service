@@ -1,0 +1,17 @@
+# systemd service for managing all unbound autoconfiguration.
+
+[Unit]
+Description=Unbound Server Configuration Autodiscovery
+Before=unbound.service
+After=firewalld.service
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /usr/libexec/device-unbound-autodiscovery start
+ExecReload=/bin/bash /usr/libexec/device-unbound-autodiscovery start
+ExecStop=/bin/bash /usr/libexec/device-unbound-autodiscovery stop
+RemainAfterExit=on
+
+[Install]
+WantedBy=multi-user.target
+

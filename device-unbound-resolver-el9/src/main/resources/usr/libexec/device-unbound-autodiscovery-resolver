@@ -1,0 +1,58 @@
+#!/bin/bash
+
+#
+# Unbound DNS Server Autodiscovery - Resolver
+# ===========================================
+#
+# This script autogenerates the unbound config for a local DNSSEC resolver.
+
+set -e
+umask 0007
+
+
+#
+# Handle resolver
+# ---------------
+#
+
+if test "$1" = "start"; then
+
+  if test -f "/etc/device/services/dns/resolver/enabled"; then
+
+    if test -f "/etc/resolv.conf"; then
+      mv "/etc/resolv.conf" "/etc/resolv.conf.saved"
+      ln -s "/usr/libexec/device/services/dns/resolv.conf" "/etc/resolv.conf"
+    fi
+
+    logger -t unbound-autodiscovery "enabled unbound resolver."
+
+  elif test -f "/etc/device/services/dns/resolver/disabled"; then
+
+    if test -L "/etc/resolv.conf"; then
+      rm -f "/etc/resolv.conf"
+      if test -f "/etc/resolv.conf.saved"; then
+        mv "/etc/resolv.conf.saved" "/etc/resolv.conf"
+      fi
+    fi
+
+    logger -t unbound-autodiscovery "disabled unbound resolver."
+
+  fi
+
+elif test "$1" = "stop"; then
+
+  if test -f "/etc/device/services/dns/resolver/disabled"; then
+
+    if test -L "/etc/resolv.conf"; then
+      rm -f "/etc/resolv.conf"
+      if test -f "/etc/resolv.conf.saved"; then
+        mv "/etc/resolv.conf.saved" "/etc/resolv.conf"
+      fi
+    fi
+
+    logger -t unbound-autodiscovery "disabled unbound resolver."
+
+  fi
+
+fi
+
