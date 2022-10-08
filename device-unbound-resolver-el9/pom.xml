@@ -119,7 +119,7 @@
             <mapping>
               <directory>/usr/libexec/device/services/dns</directory>
               <directoryIncluded>false</directoryIncluded>
-              <filemode>755</filemode>
+              <filemode>644</filemode>
               <username>root</username>
               <groupname>root</groupname>
               <sources>
