@@ -161,6 +161,7 @@
           </preremoveScriptlet>
           <requires>
             <require>device-unbound</require>
+            <require>device</require>
           </requires>
         </configuration>
       </plugin>
