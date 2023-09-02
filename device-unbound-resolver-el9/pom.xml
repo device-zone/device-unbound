@@ -148,6 +148,9 @@
                 <source>
                   <location>target/classes/usr/libexec/device/services/dns/resolver/disable</location>
                 </source>
+                <source>
+                  <location>target/classes/usr/libexec/device/services/dns/resolver/show</location>
+                </source>
               </sources>
             </mapping>
           </mappings>
