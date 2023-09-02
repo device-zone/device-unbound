@@ -8,7 +8,7 @@
 
   <artifactId>device-unbound</artifactId>
   <groupId>zone.device.platform</groupId>
-  <version>0.9.3-SNAPSHOT</version>
+  <version>0.9.3</version>
   <packaging>pom</packaging>
   <name>device unbound package</name>
   <description>Packaging for the unbound appliance</description>
@@ -20,9 +20,9 @@
   </organization>
 
   <scm>
-    <connection>scm:svn:https://github.com/device-zone/device-unbound/trunk</connection>
-    <developerConnection>scm:svn:https://github.com/device-zone/device-unbound/trunk</developerConnection>
-    <url>https://github.com/device-zone/device-unbound/trunk</url>
+    <connection>scm:svn:https://github.com/device-zone/device-unbound/tags/device-unbound-0.9.3</connection>
+    <developerConnection>scm:svn:https://github.com/device-zone/device-unbound/tags/device-unbound-0.9.3</developerConnection>
+    <url>https://github.com/device-zone/device-unbound/tags/device-unbound-0.9.3</url>
   </scm>
 
   <modules>
