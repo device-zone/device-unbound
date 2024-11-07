@@ -14,19 +14,21 @@ umask 0007
 # Handle resolver
 # ---------------
 #
+# This works by replacing /etc/resolv.conf with a sylink of our own,
+# which signals network manager and friends to not touch.
 
 if test "$1" = "start"; then
 
-  if test -f "/etc/device/services/dns/resolver/enabled"; then
+  if test ! -f "/etc/device/system/dns/resolver/disabled.bin"; then
 
     if test -f "/etc/resolv.conf"; then
       mv "/etc/resolv.conf" "/etc/resolv.conf.saved"
-      ln -s "/usr/libexec/device/services/dns/resolv.conf" "/etc/resolv.conf"
+      ln -s "/usr/libexec/device/system/dns/resolv.conf" "/etc/resolv.conf"
     fi
 
-    logger -t unbound-autodiscovery "enabled unbound resolver."
+    logger -t unbound-autodiscovery "enabled unbound dns resolver."
 
-  elif test -f "/etc/device/services/dns/resolver/disabled"; then
+  else
 
     if test -L "/etc/resolv.conf"; then
       rm -f "/etc/resolv.conf"
@@ -35,13 +37,13 @@ if test "$1" = "start"; then
       fi
     fi
 
-    logger -t unbound-autodiscovery "disabled unbound resolver."
+    logger -t unbound-autodiscovery "disabled unbound dns resolver."
 
   fi
 
 elif test "$1" = "stop"; then
 
-  if test -f "/etc/device/services/dns/resolver/disabled"; then
+  if test -f "/etc/device/system/dns/resolver/disabled.bin"; then
 
     if test -L "/etc/resolv.conf"; then
       rm -f "/etc/resolv.conf"
@@ -50,7 +52,7 @@ elif test "$1" = "stop"; then
       fi
     fi
 
-    logger -t unbound-autodiscovery "disabled unbound resolver."
+    logger -t unbound-autodiscovery "disabled unbound dns resolver."
 
   fi
 

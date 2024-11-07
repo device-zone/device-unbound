@@ -7,9 +7,9 @@ After=firewalld.service
 
 [Service]
 Type=oneshot
-ExecStart=/bin/bash /usr/libexec/device-unbound-autodiscovery start
-ExecReload=/bin/bash /usr/libexec/device-unbound-autodiscovery start
-ExecStop=/bin/bash /usr/libexec/device-unbound-autodiscovery stop
+ExecStart=/bin/bash /usr/libexec/device-autodiscovery/unbound start
+ExecReload=/bin/bash /usr/libexec/device-autodiscovery/unbound reload
+ExecStop=/bin/bash /usr/libexec/device-autodiscovery/unbound stop
 RemainAfterExit=on
 
 [Install]

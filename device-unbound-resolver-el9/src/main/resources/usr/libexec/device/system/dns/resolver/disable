@@ -1,0 +1,23 @@
+#!/bin/sh
+  
+set -e
+umask 0002
+
+if [ "$1" == "--" ]; then
+
+  /usr/bin/sudo /usr/bin/systemctl --quiet disable unbound-keygen.service
+  /usr/bin/sudo /usr/bin/systemctl --quiet disable unbound.service
+
+  if test -f "disabled.bin"; then
+    echo "dns resolver is already disabled."
+  else
+    touch "disabled.bin"
+    if systemctl is-active --quiet unbound-autodiscovery.service; then
+      /usr/bin/sudo /usr/bin/systemctl restart unbound-autodiscovery.service
+    else
+      echo "dns resolver will be disabled on next reboot."
+    fi
+  fi
+
+fi
+

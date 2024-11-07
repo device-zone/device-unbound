@@ -1,10 +1,10 @@
 #!/bin/bash
 
 #
-# Unbound DNS Server Autodiscovery
-# ================================
+# Unbound Autodiscovery
+# =====================
 #
-# This script autogenerates the unbound config.
+# This script autogenerates the unbound dns resolver config.
 
 set -e
 umask 0007
