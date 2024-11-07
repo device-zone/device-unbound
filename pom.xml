@@ -20,9 +20,9 @@
   </organization>
 
   <scm>
-    <connection>scm:svn:https://github.com/device-zone/device-unbound/trunk</connection>
-    <developerConnection>scm:svn:https://github.com/device-zone/device-unbound/trunk</developerConnection>
-    <url>https://github.com/device-zone/device-unbound/trunk</url>
+    <connection>scm:git:https://github.com/device-zone/device-unbound.git</connection>
+    <developerConnection>scm:git:https://github.com/device-zone/device-unbound.git</developerConnection>
+    <url>https://github.com/device-zone/device-unbound/</url>
   </scm>
 
   <modules>
