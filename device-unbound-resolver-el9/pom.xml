@@ -159,6 +159,9 @@
             <require>device-unbound</require>
             <require>device</require>
           </requires>
+          <provides>
+            <provide>device-dns-resolver</provide>
+          </provides>
         </configuration>
       </plugin>
     </plugins>
