@@ -14,6 +14,9 @@ if [ "$1" == "--" ]; then
     touch "disabled.bin"
     if systemctl is-active --quiet unbound-autodiscovery.service; then
       /usr/bin/sudo /usr/bin/systemctl restart unbound-autodiscovery.service
+      /usr/bin/sudo /usr/bin/systemctl stop unbound-keygen.service
+      /usr/bin/sudo /usr/bin/systemctl stop unbound.service
+      /usr/bin/sudo /usr/bin/systemctl restart unbound-postdiscovery.service
     else
       echo "dns resolver will be disabled on next reboot."
     fi

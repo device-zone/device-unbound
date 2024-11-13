@@ -16,6 +16,7 @@ if [ "$1" == "--" ]; then
       /usr/bin/sudo /usr/bin/systemctl restart unbound-autodiscovery.service
       /usr/bin/sudo /usr/bin/systemctl restart unbound-keygen.service
       /usr/bin/sudo /usr/bin/systemctl restart unbound.service
+      /usr/bin/sudo /usr/bin/systemctl restart unbound-postdiscovery.service
     else
       echo "dns resolver will be enabled on next reboot."
     fi

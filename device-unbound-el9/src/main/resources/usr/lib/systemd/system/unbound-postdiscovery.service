@@ -1,0 +1,16 @@
+# systemd service for managing all unbound postconfiguration.
+
+[Unit]
+Description=Unbound Configuration Postdiscovery
+After=unbound.service
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /usr/libexec/device-postdiscovery/unbound start
+ExecReload=/bin/bash /usr/libexec/device-postdiscovery/unbound reload
+RemainAfterExit=on
+
+[Install]
+WantedBy=multi-user.target
+
+
