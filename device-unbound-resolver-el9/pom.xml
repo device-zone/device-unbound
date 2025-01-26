@@ -97,6 +97,10 @@
                   <location>target/classes/usr/libexec/device-unbound-autodiscovery-ssh</location>
                   <destination>60-ssh</destination>
                 </source>
+                <source>
+                  <location>target/classes/usr/libexec/device-unbound-autodiscovery-sysconfig</location>
+                  <destination>70-sysconfig</destination>
+                </source>
               </sources>
             </mapping>
             <mapping>
@@ -146,7 +150,22 @@
                   <location>target/classes/usr/libexec/device/system/dns/resolver/disable</location>
                 </source>
                 <source>
+                  <location>target/classes/usr/libexec/device/system/dns/resolver/set</location>
+                </source>
+                <source>
                   <location>target/classes/usr/libexec/device/system/dns/resolver/show</location>
+                </source>
+              </sources>
+            </mapping>
+            <mapping>
+              <directory>/usr/share/device/system/dns/resolver</directory>
+              <directoryIncluded>false</directoryIncluded>
+              <filemode>644</filemode>
+              <username>root</username>
+              <groupname>root</groupname>
+              <sources>
+                <source>
+                  <location>target/classes/usr/share/device/system/dns/resolver/protocol.txt</location>
                 </source>
               </sources>
             </mapping>

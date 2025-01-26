@@ -1,0 +1,37 @@
+#!/bin/sh
+
+set -e
+umask 0002
+
+OPTIONS="--polar disabled --default all --select-base /usr/share/device/system/dns/resolver/protocol.txt --select protocol"
+
+if [ "$1" == "--" ]; then
+
+  /usr/libexec/device-set ${OPTIONS} "$@"
+
+  if test -f "disabled.bin"; then
+    if systemctl is-active --quiet unbound-autodiscovery.service; then
+      /usr/bin/sudo /usr/bin/systemctl restart unbound-autodiscovery.service
+      /usr/bin/sudo /usr/bin/systemctl stop unbound-keygen.service
+      /usr/bin/sudo /usr/bin/systemctl stop unbound.service
+      /usr/bin/sudo /usr/bin/systemctl restart unbound-postdiscovery.service
+    else
+      echo "dns resolver will be disabled on next reboot."
+    fi
+  else
+    if systemctl is-active --quiet unbound-autodiscovery.service; then
+      /usr/bin/sudo /usr/bin/systemctl restart unbound-autodiscovery.service
+      /usr/bin/sudo /usr/bin/systemctl restart unbound-keygen.service
+      /usr/bin/sudo /usr/bin/systemctl restart unbound.service
+      /usr/bin/sudo /usr/bin/systemctl restart unbound-postdiscovery.service
+    else
+      echo "dns resolver will be enabled on next reboot."
+    fi
+  fi
+
+elif [ "$1" == "-c" ]; then
+
+  /usr/libexec/device-set ${OPTIONS} "$@"
+
+fi
+
