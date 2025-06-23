@@ -21,10 +21,11 @@ if test "$1" = "start"; then
 
   if test ! -f "/etc/device/system/dns/resolver/disabled.bin"; then
 
-    if test -f "/etc/resolv.conf"; then
-      mv "/etc/resolv.conf" "/etc/resolv.conf.saved"
-      ln -s "/usr/libexec/device/system/dns/resolv.conf" "/etc/resolv.conf"
+    # whatever this is, move it out the way
+    if test -e "/etc/resolv.conf"; then
+      mv "/etc/resolv.conf" "/etc/resolv.conf.orig"
     fi
+    ln -s "/usr/libexec/device/system/dns/resolv.conf" "/etc/resolv.conf"
 
     logger -t unbound-autodiscovery "enabled unbound dns resolver."
 
@@ -32,8 +33,8 @@ if test "$1" = "start"; then
 
     if test -L "/etc/resolv.conf"; then
       rm -f "/etc/resolv.conf"
-      if test -f "/etc/resolv.conf.saved"; then
-        mv "/etc/resolv.conf.saved" "/etc/resolv.conf"
+      if test -f "/etc/resolv.conf.orig"; then
+        mv "/etc/resolv.conf.orig" "/etc/resolv.conf"
       fi
     fi
 
@@ -47,8 +48,8 @@ elif test "$1" = "stop"; then
 
     if test -L "/etc/resolv.conf"; then
       rm -f "/etc/resolv.conf"
-      if test -f "/etc/resolv.conf.saved"; then
-        mv "/etc/resolv.conf.saved" "/etc/resolv.conf"
+      if test -f "/etc/resolv.conf.orig"; then
+        mv "/etc/resolv.conf.orig" "/etc/resolv.conf"
       fi
     fi
 
