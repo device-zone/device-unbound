@@ -83,19 +83,6 @@
           </defineStatements>
           <mappings>
             <mapping>
-              <directory>/usr/libexec/device-autodiscovery</directory>
-              <directoryIncluded>false</directoryIncluded>
-              <filemode>755</filemode>
-              <username>root</username>
-              <groupname>root</groupname>
-              <sources>
-                <source>
-                  <location>target/classes/usr/libexec/device-unbound-autodiscovery</location>
-                  <destination>unbound</destination>
-                </source>
-              </sources>
-            </mapping>
-            <mapping>
               <directory>/usr/libexec/device-autodiscovery/unbound.d</directory>
               <directoryIncluded>true</directoryIncluded>
               <filemode>755</filemode>
@@ -112,19 +99,6 @@
                 <source>
                   <location>target/classes/usr/lib/systemd/system/unbound-autodiscovery.service</location>
                   <destination>unbound-autodiscovery.service</destination>
-                </source>
-              </sources>
-            </mapping>
-            <mapping>
-              <directory>/usr/libexec/device-postdiscovery</directory>
-              <directoryIncluded>false</directoryIncluded>
-              <filemode>755</filemode>
-              <username>root</username>
-              <groupname>root</groupname>
-              <sources>
-                <source>
-                  <location>target/classes/usr/libexec/device-unbound-postdiscovery</location>
-                  <destination>unbound</destination>
                 </source>
               </sources>
             </mapping>
@@ -159,6 +133,7 @@
           </preremoveScriptlet>
           <requires>
             <require>unbound</require>
+            <require>/usr/bin/sequence</require>
           </requires>
         </configuration>
       </plugin>
