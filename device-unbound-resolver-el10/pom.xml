@@ -8,7 +8,7 @@
   </parent>
 
   <properties>
-    <release.distribution>el9</release.distribution>
+    <release.distribution>el10</release.distribution>
     <release.instance>device</release.instance>
     <jdk.version>1.8</jdk.version>
     <release.cacert>/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem</release.cacert>
@@ -17,10 +17,10 @@
   </properties>
 
   <artifactId>device-unbound-resolver</artifactId>
-  <groupId>zone.device.platform.el9</groupId>
+  <groupId>zone.device.platform.el10</groupId>
   <version>0.9.10-SNAPSHOT</version>
   <packaging>rpm</packaging>
-  <name>device unbound resolver applicance for el9</name>
+  <name>device unbound resolver applicance for el10</name>
   <description>Packaging for the unbound resolver appliance for ${release.distribution}</description>
   <inceptionYear>2022</inceptionYear>
 
