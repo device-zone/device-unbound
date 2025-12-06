@@ -8,10 +8,10 @@ if [ "$1" == "--" ]; then
   /usr/bin/sudo /usr/bin/systemctl --quiet disable unbound-keygen.service
   /usr/bin/sudo /usr/bin/systemctl --quiet disable unbound.service
 
-  if test -f "disabled.bin"; then
+  if test -f "disabled.polar"; then
     echo "dns resolver is already disabled."
   else
-    touch "disabled.bin"
+    touch "disabled.polar"
     if systemctl is-active --quiet unbound-autodiscovery.service; then
       /usr/bin/sudo /usr/bin/systemctl restart unbound-autodiscovery.service
       /usr/bin/sudo /usr/bin/systemctl stop unbound-keygen.service

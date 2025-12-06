@@ -3,13 +3,13 @@
 set -e
 umask 0002
 
-OPTIONS="--polar disabled --default all --select-base /usr/share/device/system/dns/resolver/protocol.txt --select protocol"
+OPTIONS="--polar disabled --default all --select-base /usr/share/device/state/system/dns/resolver/protocol.txt --select protocol"
 
 if [ "$1" == "--" ]; then
 
   /usr/libexec/device-set ${OPTIONS} "$@"
 
-  if test -f "disabled.bin"; then
+  if test -f "disabled.polar"; then
     if systemctl is-active --quiet unbound-autodiscovery.service; then
       /usr/bin/sudo /usr/bin/systemctl restart unbound-autodiscovery.service
       /usr/bin/sudo /usr/bin/systemctl stop unbound-keygen.service

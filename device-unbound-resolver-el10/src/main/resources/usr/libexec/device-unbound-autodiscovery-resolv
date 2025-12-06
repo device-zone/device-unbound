@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 #
 # Unbound DNS Server Autodiscovery - Resolver
@@ -19,13 +19,13 @@ umask 0007
 
 if test "$1" = "start"; then
 
-  if test ! -f "/etc/device/system/dns/resolver/disabled.bin"; then
+  if test ! -f "/etc/device/system/dns/resolver/disabled.polar"; then
 
     # whatever this is, move it out the way
     if test -e "/etc/resolv.conf"; then
       mv "/etc/resolv.conf" "/etc/resolv.conf.orig"
     fi
-    ln -s "/usr/libexec/device/system/dns/resolv.conf" "/etc/resolv.conf"
+    ln -s "/usr/libexec/device/state/system/dns/resolv.conf" "/etc/resolv.conf"
 
     logger -t unbound-autodiscovery "enabled unbound dns resolver."
 
@@ -44,7 +44,7 @@ if test "$1" = "start"; then
 
 elif test "$1" = "stop"; then
 
-  if test -f "/etc/device/system/dns/resolver/disabled.bin"; then
+  if test -f "/etc/device/system/dns/resolver/disabled.polar"; then
 
     if test -L "/etc/resolv.conf"; then
       rm -f "/etc/resolv.conf"
