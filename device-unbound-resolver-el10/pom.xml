@@ -83,7 +83,7 @@
           </defineStatements>
           <mappings>
             <mapping>
-              <directory>/usr/libexec/device-autodiscovery/unbound.d</directory>
+              <directory>/usr/libexec/device/autodiscovery/unbound.d</directory>
               <directoryIncluded>false</directoryIncluded>
               <filemode>755</filemode>
               <username>root</username>
@@ -111,61 +111,61 @@
               <groupname>device</groupname>
             </mapping>
             <mapping>
-              <directory>/usr/libexec/device/system/dns</directory>
+              <directory>/usr/libexec/device/state/system/dns</directory>
               <directoryIncluded>true</directoryIncluded>
               <filemode>755</filemode>
               <username>root</username>
               <groupname>root</groupname>
             </mapping>
             <mapping>
-              <directory>/usr/libexec/device/system/dns</directory>
+              <directory>/usr/libexec/device/state/system/dns</directory>
               <directoryIncluded>false</directoryIncluded>
               <filemode>644</filemode>
               <username>root</username>
               <groupname>root</groupname>
               <sources>
                 <source>
-                  <location>target/classes/usr/libexec/device/system/dns/resolv.conf</location>
+                  <location>target/classes/usr/libexec/device/state/system/dns/resolv.conf</location>
                 </source>
               </sources>
             </mapping>
             <mapping>
-              <directory>/usr/libexec/device/system/dns/resolver</directory>
+              <directory>/usr/libexec/device/state/system/dns/resolver</directory>
               <directoryIncluded>true</directoryIncluded>
               <filemode>755</filemode>
               <username>root</username>
               <groupname>root</groupname>
             </mapping>
             <mapping>
-              <directory>/usr/libexec/device/system/dns/resolver</directory>
+              <directory>/usr/libexec/device/state/system/dns/resolver</directory>
               <directoryIncluded>false</directoryIncluded>
               <filemode>755</filemode>
               <username>root</username>
               <groupname>root</groupname>
               <sources>
                 <source>
-                  <location>target/classes/usr/libexec/device/system/dns/resolver/enable</location>
+                  <location>target/classes/usr/libexec/device/state/system/dns/resolver/enable</location>
                 </source>
                 <source>
-                  <location>target/classes/usr/libexec/device/system/dns/resolver/disable</location>
+                  <location>target/classes/usr/libexec/device/state/system/dns/resolver/disable</location>
                 </source>
                 <source>
-                  <location>target/classes/usr/libexec/device/system/dns/resolver/set</location>
+                  <location>target/classes/usr/libexec/device/state/system/dns/resolver/set</location>
                 </source>
                 <source>
-                  <location>target/classes/usr/libexec/device/system/dns/resolver/show</location>
+                  <location>target/classes/usr/libexec/device/state/system/dns/resolver/show</location>
                 </source>
               </sources>
             </mapping>
             <mapping>
-              <directory>/usr/share/device/system/dns/resolver</directory>
+              <directory>/usr/share/device/state/system/dns/resolver</directory>
               <directoryIncluded>false</directoryIncluded>
               <filemode>644</filemode>
               <username>root</username>
               <groupname>root</groupname>
               <sources>
                 <source>
-                  <location>target/classes/usr/share/device/system/dns/resolver/protocol.txt</location>
+                  <location>target/classes/usr/share/device/state/system/dns/resolver/protocol.txt</location>
                 </source>
               </sources>
             </mapping>
@@ -180,7 +180,7 @@
           </preremoveScriptlet>
           <requires>
             <require>device-unbound</require>
-            <require>device</require>
+            <require>device &gt;= 1.0.0</require>
           </requires>
           <provides>
             <provide>device-dns-resolver</provide>
