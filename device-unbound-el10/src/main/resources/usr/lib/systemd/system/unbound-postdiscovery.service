@@ -6,8 +6,8 @@ After=unbound.service
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/sequence -s daemon.info -b /usr/libexec device/autodiscovery/unbound.d start
-ExecReload=/usr/bin/sequence -s daemon.info -b /usr/libexec device/autodiscovery/unbound.d reload
+ExecStart=/usr/bin/flock -s /etc/device/system/dns/ /usr/bin/sequence -s daemon.info -b /usr/libexec device/postdiscovery/unbound.d start
+ExecReload=/usr/bin/flock -s /etc/device/system/dns/ /usr/bin/sequence -s daemon.info -b /usr/libexec device/postdiscovery/unbound.d reload
 RemainAfterExit=on
 
 [Install]

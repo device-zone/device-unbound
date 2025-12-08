@@ -11,7 +11,7 @@ if [ "$1" == "--" ]; then
   if test -f "disabled.polar"; then
     echo "dns resolver is already disabled."
   else
-    touch "disabled.polar"
+    /usr/libexec/device-tool --lock /etc/device/system/dns/ --polar disabled -- "disabled" "yes"
     if systemctl is-active --quiet unbound-autodiscovery.service; then
       /usr/bin/sudo /usr/bin/systemctl restart unbound-autodiscovery.service
       /usr/bin/sudo /usr/bin/systemctl stop unbound-keygen.service

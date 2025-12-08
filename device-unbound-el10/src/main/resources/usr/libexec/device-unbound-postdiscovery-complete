@@ -1,0 +1,14 @@
+#!/bin/sh
+
+#
+# Unbound DNS Server Postdiscovery - Complete
+# ===========================================
+#
+# This script completes added / updated / removed.
+
+set -e
+umask 0007
+
+rm -f /etc/device/system/dns/resolver/.added
+rm -f /etc/device/system/dns/resolver/.updated
+

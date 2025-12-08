@@ -3,7 +3,8 @@
 set -e
 umask 0002
 
-OPTIONS="--show - \
+OPTIONS="--lock /etc/device/system/dns/ \
+         --show - \
          --polar disabled \
          --default all --select-base /usr/share/device/state/system/dns/resolver/protocol.txt --select protocol"
 

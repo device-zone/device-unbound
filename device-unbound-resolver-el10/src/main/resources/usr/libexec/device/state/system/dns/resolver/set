@@ -3,7 +3,8 @@
 set -e
 umask 0002
 
-OPTIONS="--polar disabled \
+OPTIONS="--lock /etc/device/system/dns/ \
+         --polar disabled \
          --default all --select-base /usr/share/device/state/system/dns/resolver/protocol.txt --select protocol"
 
 if [ "$1" == "--" ]; then

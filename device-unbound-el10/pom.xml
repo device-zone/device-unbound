@@ -83,7 +83,7 @@
           </defineStatements>
           <mappings>
             <mapping>
-              <directory>/usr/libexec/device-autodiscovery/unbound.d</directory>
+              <directory>/usr/libexec/device/autodiscovery/unbound.d</directory>
               <directoryIncluded>true</directoryIncluded>
               <filemode>755</filemode>
               <username>root</username>
@@ -103,11 +103,24 @@
               </sources>
             </mapping>
             <mapping>
-              <directory>/usr/libexec/device-postdiscovery/unbound.d</directory>
+              <directory>/usr/libexec/device/postdiscovery/unbound.d</directory>
               <directoryIncluded>true</directoryIncluded>
               <filemode>755</filemode>
               <username>root</username>
               <groupname>root</groupname>
+            </mapping>
+            <mapping>
+              <directory>/usr/libexec/device/postdiscovery/unbound.d</directory>
+              <directoryIncluded>false</directoryIncluded>
+              <filemode>755</filemode>
+              <username>root</username>
+              <groupname>root</groupname>
+              <sources>
+                <source>
+                  <location>target/classes/usr/libexec/device-unbound-postdiscovery-complete</location>
+                  <destination>99-complete</destination>
+                </source>
+              </sources>
             </mapping>
             <mapping>
               <directory>/usr/lib/systemd/system</directory>
